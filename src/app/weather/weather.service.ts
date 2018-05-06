@@ -20,10 +20,12 @@ export class WeatherService {
 
   }
 
+  // 日本とかの国名と気温と天候のweather型の配列を返してる
   getWeatherItems(){
     	return WEATHER_LIST;
   } 
 
+  // いわゆるテスト用
   getWeatheritemsbyCity(cityName): Observable<any>{
 
     	 return this.http.get(
@@ -36,6 +38,7 @@ export class WeatherService {
     	 .catch(this.handleError);
   }
 
+  // WeatherSerchComponentでばりばり使われている
   getWeatherForecast(cityName): Observable<any[]>{
 
      return this.http.get(environment.baseUrl +'forecast?q='+ cityName +'&appid='+ environment.appId +'&units=' + environment.units)
