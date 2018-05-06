@@ -13,10 +13,13 @@ import { Router } from '@angular/router';
 })
 export class WeatherListComponent implements OnInit {
   //@Input('city') cityName: String;
+  // WeatherSearchComponent のweatherForecastDataプロパティをこことバイドさせてる！！！！！
+  // したがって、このクラスの weathers にはパースされたJSONが入ってるはず
   @Input('WeatherForecastList') weathers: any;
   errorMessage: string;
  // weathers: any[];
 
+//  WeatherService と Router を注入
   constructor(private _weatherService: WeatherService,
               private router: Router){
     //console.log(city);

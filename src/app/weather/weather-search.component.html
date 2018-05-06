@@ -5,12 +5,14 @@
                 <!-- <input ngControl="location" class="form-control" type="text" placeholder="Enter city name" id="city" (input)="onSearchLocation(input.value)" required #input > -->
 
                <!--  two ways data binding through [(ngModel)]  -->
+               <!-- 解明済み 180506 sun -->
                 <input class="form-control" type="text" placeholder="Enter city name" id="city" [(ngModel)] ="cityName" name="cityname" (input)="onSearchLocationWithEvent($event)">  
 
                 </div>
+                <!-- 解明済み 180506 sun -->
                 <button class="btn btn-primary" [disabled]="disabledForecastButton" (click) ="onSubmitDatabinding()" type="submit">Forecast</button>
                 {{disabledForecastButton}} 
-                {{cityName}}            
+                {{cityName}}   <!-- 双方向データバインディング上の[(ngModel)]と関連している -->         
             </form>          
             <weather-list [WeatherForecastList]="weatherForecastData"></weather-list> 
 </section>

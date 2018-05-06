@@ -13,8 +13,9 @@ export class WeatherSearchComponent implements OnInit {
     errorMessage: string;
     weatherForecastData: any[];
     disabledForecastButton: boolean = true;
-    cityName:string;
+    cityName:string;    // 双方向データバインディング[(ngModel)]
 
+    // WeatherServiceの注入
     constructor(private _weatherService:WeatherService) {
     }
 
@@ -38,21 +39,29 @@ export class WeatherSearchComponent implements OnInit {
      console.log(cityName);
     }
 
+    // 送信ボタンを押したときのイベントハンドラ
     onSubmitDatabinding() {
       
      console.log("inside the two way:"+ this.cityName);
-        this._weatherService.getWeatherForecast(this.cityName)
+    //  weatherServiceを使ってる
+        this._weatherService.getWeatherForecast(this.cityName) // パースされたjsonが返ってきてる
+        // このままでは実行されていないから、.subscribe でメンバに返ってきたデータを格納
          .subscribe(data => {this.weatherForecastData = data}, 
-                    error =>  this.errorMessage = <any>error,            
+                    error =>  this.errorMessage = <any>error,   // サービスの errMsg をメンバに代入            
      );
+    //  入力した文字列と送信ボタンをリセットする
       this.onResetControls();
 
     }
 
+    // input textに入力されるたびに実行される関数
     onSearchLocationWithEvent(event:Event) {
       //console.log("Complete event data value: "+ event);
+    //   angularのformの解説の場所に同じふうに書いていた
       console.log("Control value: "+ (<HTMLInputElement>event.target).value);  
+    //   入力した内容を双方向データバインディングしている変数に代入
       this.cityName = (<HTMLInputElement>event.target).value;
+    //   何か入力されたときにだけボタンをクリックできるようにしている
       this.disabledForecastButton = false;
     }
 
