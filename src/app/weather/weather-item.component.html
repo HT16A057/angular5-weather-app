@@ -2,11 +2,25 @@
     <div >
         <!-- <h2 style="text-transform: uppercase;"> {{ weather.weather[0].main }}</h2> -->
         <!-- こっちのほうがシンプル -->
+        <!-- 天気 -->
         <h2> {{ weather.weather[0].main | uppercase}}</h2>        
+        <!-- 天気アイコンで表示 -->
+        <img src="{{'http://openweathermap.org/img/w/'+weather.weather[0].icon+'.png'}}">
+        <!-- 天気情報 -->
         <h3 > {{ weather.weather[0].description }}</h3>
-        <p >Wind speed (meter/sec): {{ weather.wind.speed }}</p>
-        <span class="temperature">Temperature (celsius): {{ weather.main.temp }} </span>
+        <!-- 風速 -->
+        <p >風速: {{ weather.wind.speed }}</p>
+        <!-- 気温 -->
+        <span class="temperature">気温: {{ weather.main.temp }} </span><br>
+        <!-- 最低気温と最高気温を追加 -->
+        <span class="temperature">最低気温: {{ weather.main.temp_min}} | 最高気温: {{ weather.main.temp_max }}</span>
+        <!-- 時刻 -->
         <p>{{ weather.dt_txt}}</p>
-        <a [routerLink]="['/detail-report']">Detail Report</a>
+        <!-- 詳細ビューへ遷移。ルーティングを行ってる -->
+        <a [routerLink]="['/detail-report']">Detail Report</a><br>
+        <!-- わかりやすいように地域コードを表示しようとしたがJSONで値が帰ってきてない感じ -->
+        <!-- <span class="districtCode">{{ weather.id }}</span> -->
+        <!-- weather-list.component.ts 中の let i=index を表示 -->
+        <!-- <h1>{{i}}</h1> -->
     </div>
 </article>

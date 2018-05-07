@@ -46,7 +46,7 @@ export class WeatherSearchComponent implements OnInit {
     //  weatherServiceを使ってる
         this._weatherService.getWeatherForecast(this.cityName) // パースされたjsonが返ってきてる
         // このままでは実行されていないから、.subscribe でメンバに返ってきたデータを格納
-         .subscribe(data => {this.weatherForecastData = data}, 
+         .subscribe(data => {this.weatherForecastData = data;}, // ここで英語を日本語にする関数をつくる
                     error =>  this.errorMessage = <any>error,   // サービスの errMsg をメンバに代入            
      );
     //  入力した文字列と送信ボタンをリセットする
@@ -70,5 +70,7 @@ export class WeatherSearchComponent implements OnInit {
         this.disabledForecastButton= true;
 
     }
+
+
 
 }

@@ -15,6 +15,7 @@ export class WeatherListComponent implements OnInit {
   //@Input('city') cityName: String;
   // WeatherSearchComponent のweatherForecastDataプロパティをこことバイドさせてる！！！！！
   // したがって、このクラスの weathers にはパースされたJSONが入ってるはず
+  // @Input('')の中身の引数は次にバインディングに関連させるときの名前！これを目印的な感じで使う
   @Input('WeatherForecastList') weathers: any;
   errorMessage: string;
  // weathers: any[];
