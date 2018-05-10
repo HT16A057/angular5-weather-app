@@ -40,12 +40,13 @@ export class WeatherService {
     	 .map(response => response.json())
     	 .catch(this.handleError);
   }
-
+val;
   // WeatherSerchComponentでばりばり使われている
   // 実際にこのコードがプログラム中で使われている
   getWeatherForecast(cityName): Observable<any[]>{
     // ちょうどXMLHttpRequestを要求している。
      return this.http.get(environment.baseUrl +'forecast?q='+ cityName +'&appid='+ environment.appId +'&units=' + environment.units)
+    //  console.log(val)とすると非同期なので即時には表示されないが、時間を開けるとしっかりとJSONが返っていることが確認できる
      .map(response => this.extractData(response)) // extractData関数により、戻り地は理想のJSON
      .catch(this.handleError);  // エラー処理
   }

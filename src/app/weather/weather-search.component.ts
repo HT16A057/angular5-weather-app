@@ -66,8 +66,8 @@ export class WeatherSearchComponent implements OnInit {
     }
 
     onResetControls(){
-        this.cityName = '';
-        this.disabledForecastButton= true;
+        // this.cityName = '';
+        // this.disabledForecastButton= true;
 
     }
 
